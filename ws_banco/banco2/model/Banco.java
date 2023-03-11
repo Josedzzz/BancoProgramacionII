@@ -313,14 +313,9 @@ public class Banco {
         String mensaje = "El dinero ha sido transferido correctamente";
         Cuenta cuentaDestino = obtenerCuenta(numCuentaDestino);
         Cuenta cuentaTransferencia = obtenerCuenta(numCuentaTransferencia);
-        if(cuentaDestino == null) {
+        if(cuentaDestino == null || cuentaTransferencia == null) {
 			throw new Exception("La cuenta bancaria no existe");
-		}
-		
-		if(cuentaTransferencia == null) {
-			throw new Exception("La cuenta bancaria no existe");
-		}
-		
+		}	
 		try {
 			cuentaTransferencia.transferirDinero(cuentaDestino, dinero);
 			return mensaje + " de la cuenta de " + cuentaTransferencia.getClienteTitular().getNombre() + 
